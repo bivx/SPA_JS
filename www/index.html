@@ -15,19 +15,21 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <button id="menu-close" type="button" name="button" style="display: none">&#x2716;</button>
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>
+        </button>
         <a href="#/" class="navbar-brand">Brand</a>
       </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="menu-toggle"></div>
+
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="#/napisz">Write a comment</a></li>
-          <li><a href="#/moje-konto">My account</a></li>
+          <li class="list-comment"><a href="#/napisz">Write a comment</a></li>
+          <li class="list-account" style="display: none"><a href="#/moje-konto">My account</a></li>
           <li><a href="#/logowanie">Login</a></li>
         </ul>
         <form class="navbar-form navbar-left">
@@ -40,57 +42,56 @@
     </div>
   </nav>
 
+<div class = "image-background"></div>
+
   <div id="views">
 
   </div>
   <script id="moje-konto" type="text/template">
     <div>
       <div class="panel panel-info">
-        <!-- <div class="panel-heading">Panel heading</div>
-        <div class="panel-body">
-          jireoj
-        </div>
-        <div class="panel-heading">Panel heading</div>
-        <div class="panel-body">
-          <p>jireoj</p>
-        </div> -->
       </div>
     </div>
   </script>
   <script id="logowanie" type="text/template">
     <div>
       <div id="form-error"> </div>
-      <form method="post" id="form-control">
-        <div class="input-group input-group-lg">
-          <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
-          <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
-        </div>
-        <div class="input-group input-group-lg">
-          <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
-          <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
-        </div>
-        <div style="display: none" class="input-group input-group-lg" id="register">
-          <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
-          <input type="password" class="form-control password" placeholder="Repeat password" aria-describedby="sizing-addon1">
-        </div>
-      </form>
-      <div><a class="btn btn-info btn-lg tes" role="button" id="login" href="javascript:void(0);">Login</a></div>
-      <div class="wraper-register" style="display: none"><a class="btn btn-info btn-lg register-now" role="button" id="register" href="javascript:void(0);">Register</a></div>
-      <div class="btn-register"> register now</div>
-    </div>
-
+      <div class="form-wrap">
+        <form method="post" id="form-control">
+          <div class="input-group input-group-lg log">
+            <span class="input-group-addon span" id="sizing-addon1"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+            <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+          </div>
+          <div class="input-group input-group-lg log">
+            <span class="input-group-addon span" id="sizing-addon1"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+            <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
+          </div>
+          <div style="display: none" class="input-group input-group-lg log" id="register">
+            <span class="input-group-addon span" id="sizing-addon1"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+            <input type="password" class="form-control password" placeholder="Repeat password" aria-describedby="sizing-addon1">
+          </div>
+        </form>
+        <div class="btn-wrap"><a class="btn btn-info btn-lg tes" role="button" id="login" href="javascript:void(0);">Login</a></div>
+        <div class="wraper-register btn-wrap" style="display: none"><a class="btn btn-info btn-lg register-now" role="button" id="register" href="javascript:void(0);">Register</a></div>
+        <div class="btn-register"> Register now</div>
+      </div>
+      <div class="wraper-logout btn-wrap" style="display: none"><a class="btn btn-info btn-lg quit" role="button" id="logout">Logout</a></div>
     </div>
   </script>
   <script id="napisz" type="text/template">
     <div>
       <form method="post" id="form-control">
-        <div class="input-group input-group-lg">
+        <div class="input-group input-group-lg log">
+          <span class="input-group-addon span" id="sizing-addon1"><span class="glyphicon glyphicon-bold" aria-hidden="true"></span></span>
           <input type="text" class="form-control text" placeholder="Title" aria-describedby="sizing-addon1">
         </div>
-        <div class="input-group input-group-lg">
-          <textarea type="password" class="form-control text" placeholder="Content" aria-describedby="sizing-addon1"></textarea>
+
+        <div class="input-group input-group-lg log">
+          <span class="input-group-addon span" id="sizing-addon1"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></span>
+          <textarea type="text" class="form-control text" placeholder="Content" aria-describedby="sizing-addon1"></textarea>
         </div>
-        <div><a class="btn btn-info btn-lg tes" role="button" id="comment" href="javascript:void(0);">Wyslij</a></div>
+
+        <div class="btn-wrap"><a class="btn btn-info btn-lg tes" role="button" id="comment" href="javascript:void(0);">Send</a></div>
       </form>
     </div>
   </script>
@@ -101,4 +102,5 @@
   <script src="js/napisz.js"></script>
 
 </body>
+
 </html>

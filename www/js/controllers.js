@@ -2,8 +2,6 @@
 
   'use strict';
 
-  window.loged = "";
-
   Function.prototype.ajax = function(method, url, data, success) {
     if (method === "get") {
       var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
@@ -35,20 +33,7 @@
     }
   }
 
-  // create Node from json object
-  // HTMLElement.prototype.createNodes =
-  //   function(obj, parametr, newNode) {
-  //     for (var i in obj) {
-  //       if (obj.hasOwnProperty(i)) {
-  //         if (obj[i][parametr]) {
-  //           var el = document.createElement(newNode);
-  //           el.innerHTML = obj[i][parametr];
-  //           el.className = parametr;
-  //           this.appendChild(el)
-  //         }
-  //       }
-  //     }
-  //   }
+
 
   HTMLElement.prototype.createNodes =
     function(obj, parametr, parametr2, newNode, name, name2) {
@@ -68,6 +53,27 @@
           that.appendChild(e);
         }
       })
-    }
+    };
 
+  if (!window.loged) {
+    document.getElementsByClassName("list-account")[0].style.display = "none";
+    document.getElementsByClassName("list-comment")[0].style.display = "none";
+  }
+
+  const navButton = document.getElementsByClassName("navbar-toggle")[0]
+  navButton.addEventListener("click", function() {
+    navButton.style.display = "none";
+    const parentNode = document.getElementsByClassName("menu-toggle")[0];
+    const chidlNode = document.getElementById('bs-example-navbar-collapse-1');
+    chidlNode.className = "";
+    parentNode.appendChild(chidlNode);
+    const close = document.getElementById('menu-close');
+    close.style.display = "block";
+    close.style.color = "FFF";
+    close.addEventListener("click", function() {
+      navButton.style.display = "block";
+      close.style.display = "none";
+      chidlNode.style.display = "none";
+    }, false);
+  }, false)
 })();

@@ -42,14 +42,15 @@
   }
 
   function router() {
-    if (window.performance || performance.navigation.type == 1) {
-      helper(window.location.href);
-    }
+    window.addEventListener('load', function(e) {
+      window.location.href = window.location.origin + "/#/logowanie";
+      helper(window.location.origin + "/#/logowanie");
+      window.loged = "";
+    }, false)
     window.addEventListener("hashchange", function(e) {
       helper(e.newURL);
     }, false);
   }
   router();
-
 
 })();

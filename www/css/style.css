@@ -1,5 +1,41 @@
 .btn-register {
-  font-size: 20px;
+  font-size: 19px;
   text-align: left;
   cursor: pointer;
+  text-align: center;
+  padding-top: 20px;
+  color: lightslategray;
+}
+
+.log {
+  width: 65%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.span {
+  color: white !important;
+  background: #5bc0de !important;
+  border-color: #5bc0de !important;
+}
+
+.btn-wrap {
+  text-align: center;
+  margin: auto;
+}
+
+.image-background {
+  width: 100vw;
+  background-image: url(https://pixabay.com/get/eb36b1092cf3083ed1584d05fb0938c9bd22ffd41db8144197f9c27aa0/alphabets-2306479_1280.jpg);
+  height: 45vh;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position-y: 16%;
+  background-position-x: 83%;
+  margin-bottom: 45px;
+}
+
+.navbar {
+  margin-bottom: 0!important;
 }

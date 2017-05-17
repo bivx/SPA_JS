@@ -4,6 +4,9 @@
 const express = require('express'),
   bodyParser = require('body-parser'),
   mongoose = require('mongoose'),
+  passport = require('passport'),
+  LocalStrategy = require('passport-local').Strategy,
+  session = require('express-session'),
   Schema = mongoose.Schema,
   app = express();
 
@@ -31,7 +34,7 @@ app.post('/moje-konto', function(req, res, next) {
   }, function(err, obj) {
     if (!obj) {
       res.send({
-        message: "Nieprawidłowa nazwa użytkownika lub hasło"
+        message: "Wrong email or password"
       })
     } else {
       res.json(obj.comment);
@@ -60,6 +63,8 @@ const userSchema = new Schema({
 
 var User = mongoose.model('User', userSchema);
 
+const pattern = /^.+@.+\.\w{2,3}$/gi;
+
 // register new user
 app.post('/register', function(req, res, next) {
   if (req.body.password != req.body.repeatPassword) {
@@ -67,33 +72,39 @@ app.post('/register', function(req, res, next) {
       message: "Paasswords are not the same"
     })
   }
-  User.findOne({
-    email: req.body.email
-  }, function(err, obj) {
-    if (!obj) {
-      var user = new User({
-        email: req.body.email,
-        password: req.body.password
-      });
-      user.save(function(err, obj) {
-        if (err) {
-          res.send({
-            message: 'something went wrong'
-          });
-        } else {
-          console.log(obj);
-          res.send({
-            message: 'success',
-            email: obj.email
-          });
-        }
-      });
-    } else {
-      res.send({
-        message: 'podany mail już istnieje'
-      })
-    }
-  });
+  if (!pattern.test(req.body.email)) {
+    return res.send({
+      message: "Email is incorrect"
+    })
+  } else {
+    User.findOne({
+      email: req.body.email
+    }, function(err, obj) {
+      if (!obj) {
+        var user = new User({
+          email: req.body.email,
+          password: req.body.password
+        });
+        user.save(function(err, obj) {
+          if (err) {
+            res.send({
+              message: 'something went wrong'
+            });
+          } else {
+            console.log(obj);
+            res.send({
+              message: 'success',
+              email: obj.email
+            });
+          }
+        });
+      } else {
+        res.send({
+          message: 'your email allready exist'
+        })
+      }
+    });
+  }
 });
 
 //login user

@@ -14,8 +14,9 @@
         (function() {}).ajax("post", '/login', params, function(data) {
           var data = JSON.parse(data);
           if (data.message === "success") {
-              window.loged = data.email;
+            window.loged = data.email;
             window.location.href = window.location.origin + "/#/napisz";
+            document.getElementsByClassName('list-account')[0].style.display = "block";
           } else {
             document.getElementById("form-error").textContent = data.message;
           }
@@ -50,6 +51,19 @@
           })
         }, false);
       }, false);
+
+      if (window.loged) {
+        const login = document.getElementsByClassName("form-wrap")[0];
+        login.style.display = "none";
+        const logout = document.getElementsByClassName("wraper-logout")[0];
+        logout.style.display = "block";
+        const btnLogout = document.getElementsByClassName('quit')[0];
+        btnLogout.addEventListener("click", function() {
+          window.loged = "";
+          logout.style.display = "none";
+          login.style.display = "block";
+        }, false)
+      }
     })();
   })
 });
