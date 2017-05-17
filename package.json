@@ -1,0 +1,25 @@
+{
+  "name": "thank",
+  "version": "1.0.0",
+  "description": "ThankYou App",
+  "main": "index.js",
+  "scripts": {
+    "test": "mag"
+  },
+  "repository": {
+    "type": "git",
+    "url": "magda_repository"
+  },
+  "author": "Magda",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "connect-redis": "^3.3.0",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "mongoose": "^4.9.8",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "q": "^1.5.0"
+  }
+}
