@@ -4,8 +4,6 @@
 const express = require('express'),
   bodyParser = require('body-parser'),
   mongoose = require('mongoose'),
-  passport = require('passport'),
-  LocalStrategy = require('passport-local').Strategy,
   session = require('express-session'),
   Schema = mongoose.Schema,
   app = express();
@@ -63,18 +61,18 @@ const userSchema = new Schema({
 
 var User = mongoose.model('User', userSchema);
 
-const pattern = /^.+@.+\.\w{2,3}$/gi;
+const pattern = /^.+@.+\.\w{2,3}$/i;
 
 // register new user
 app.post('/register', function(req, res, next) {
+  if (pattern.test(req.body.email) === false) {
+    return res.send({
+      message: "Email is incorrect"
+    })
+  }
   if (req.body.password != req.body.repeatPassword) {
     return res.send({
       message: "Paasswords are not the same"
-    })
-  }
-  if (!pattern.test(req.body.email)) {
-    return res.send({
-      message: "Email is incorrect"
     })
   } else {
     User.findOne({
@@ -88,7 +86,7 @@ app.post('/register', function(req, res, next) {
         user.save(function(err, obj) {
           if (err) {
             res.send({
-              message: 'something went wrong'
+              message: 'Something went wrong'
             });
           } else {
             console.log(obj);
@@ -100,7 +98,7 @@ app.post('/register', function(req, res, next) {
         });
       } else {
         res.send({
-          message: 'your email allready exist'
+          message: 'Your email allready exist'
         })
       }
     });
@@ -110,22 +108,28 @@ app.post('/register', function(req, res, next) {
 //login user
 app.post('/login', function(req, res, next) {
 
-  User.findOne({
-    email: req.body.email,
-    password: req.body.password
-  }, function(err, obj) {
-    if (!obj) {
-      res.send({
-        message: "Nieprawidłowa nazwa użytkownika lub hasło"
-      })
-    } else {
-      res.send({
-        message: "success",
-        email: obj.email
-      });
-      next()
-    }
-  });
+  if (pattern.test(req.body.email) === false) {
+    return res.send({
+      message: "Email is incorrect"
+    })
+  } else {
+    User.findOne({
+      email: req.body.email,
+      password: req.body.password
+    }, function(err, obj) {
+      if (!obj) {
+        res.send({
+          message: "Wrong email or password"
+        })
+      } else {
+        res.send({
+          message: "success",
+          email: obj.email
+        });
+        next()
+      }
+    });
+  }
 });
 
 
@@ -145,7 +149,7 @@ app.post('/comment', function(req, res, next) {
     function(err, obj) {
       if (!obj) {
         res.send({
-          message: "something went wrong"
+          message: "Something went wrong"
         })
       } else {
         res.send({
@@ -163,7 +167,7 @@ app.post('/my-account', function(req, res, next) {
   }, function(err, obj) {
     if (!obj) {
       res.send({
-        message: "Brak"
+        message: "Empty"
       })
     } else {
       let com = obj.comment;

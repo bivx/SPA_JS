@@ -3,6 +3,7 @@
     (function() {
       const login = document.getElementById('login');
       const repeatPassword = document.getElementById('register');
+      const errorMessage = document.getElementById("form-error");
       login.addEventListener('click', function() {
         var email = document.getElementsByClassName('form-control')[1].value;
         var password = document.getElementsByClassName('form-control')[2].value;
@@ -17,8 +18,10 @@
             window.loged = data.email;
             window.location.href = window.location.origin + "/#/napisz";
             document.getElementsByClassName('list-account')[0].style.display = "block";
+            document.getElementsByClassName('list-comment')[0].style.display = "block";
           } else {
-            document.getElementById("form-error").textContent = data.message;
+            errorMessage.textContent = data.message;
+            errorMessage.style.display = "block";
           }
         })
       }, false);
@@ -44,9 +47,12 @@
             var data = JSON.parse(data);
             if (data.message === "success") {
               window.loged = data.email;
+              document.getElementsByClassName('list-account')[0].style.display = "block";
+              document.getElementsByClassName('list-comment')[0].style.display = "block";
               window.location.href = window.location.origin + "/#/napisz";
             } else {
-              document.getElementById("form-error").textContent = data.message;
+              errorMessage.textContent = data.message;
+              errorMessage.style.display = "block";
             }
           })
         }, false);
@@ -62,6 +68,8 @@
           window.loged = "";
           logout.style.display = "none";
           login.style.display = "block";
+          document.getElementsByClassName("list-account")[0].style.display = "none";
+          document.getElementsByClassName("list-comment")[0].style.display = "none";
         }, false)
       }
     })();

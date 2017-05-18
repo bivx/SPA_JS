@@ -13,6 +13,10 @@
   margin-bottom: 20px;
 }
 
+#form-error {
+  text-align: center;
+}
+
 .span {
   color: white !important;
   background: #5bc0de !important;
@@ -26,7 +30,7 @@
 
 .image-background {
   width: 100vw;
-  background-image: url(https://pixabay.com/get/eb36b1092cf3083ed1584d05fb0938c9bd22ffd41db8144197f9c27aa0/alphabets-2306479_1280.jpg);
+  background-image: url(../img/img-background.jpg);
   height: 45vh;
   margin: 0;
   padding: 0;

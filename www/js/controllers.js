@@ -58,7 +58,7 @@
   if (!window.loged) {
     document.getElementsByClassName("list-account")[0].style.display = "none";
     document.getElementsByClassName("list-comment")[0].style.display = "none";
-  }
+  } 
 
   const navButton = document.getElementsByClassName("navbar-toggle")[0]
   navButton.addEventListener("click", function() {
