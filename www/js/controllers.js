@@ -58,18 +58,19 @@
   if (!window.loged) {
     document.getElementsByClassName("list-account")[0].style.display = "none";
     document.getElementsByClassName("list-comment")[0].style.display = "none";
-  } 
+  }
 
-  const navButton = document.getElementsByClassName("navbar-toggle")[0]
+  const navButton = document.getElementsByClassName("navbar-toggle")[0];
+  const parentNode = document.getElementsByClassName("menu-toggle")[0];
+  const chidlNode = document.getElementById('bs-example-navbar-collapse-1');
   navButton.addEventListener("click", function() {
     navButton.style.display = "none";
-    const parentNode = document.getElementsByClassName("menu-toggle")[0];
-    const chidlNode = document.getElementById('bs-example-navbar-collapse-1');
     chidlNode.className = "";
+    chidlNode.style.display = "block";
     parentNode.appendChild(chidlNode);
     const close = document.getElementById('menu-close');
     close.style.display = "block";
-    close.style.color = "FFF";
+
     close.addEventListener("click", function() {
       navButton.style.display = "block";
       close.style.display = "none";

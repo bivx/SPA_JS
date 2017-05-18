@@ -134,7 +134,6 @@ app.post('/login', function(req, res, next) {
 
 
 app.post('/comment', function(req, res, next) {
-  console.log(req.body.title, req.body.content);
 
   User.findOneAndUpdate({
       email: req.body.email

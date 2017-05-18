@@ -9,12 +9,11 @@
 
     if (typeof obj === "object") {
       store.push(obj);
-      localStorage.setItem(Object.keys(obj)[0], obj[Object.keys(obj)[0]].toString());
     }
   };
 
   function init(el) {
-    if (el && store.length) {
+    if (el) {
       for (var i in store) {
         if (store.hasOwnProperty(i)) {
           if (store[i][el]) {
@@ -22,10 +21,8 @@
           }
         }
       }
-    } else if (el && !store.length) {
-      var getEl = localStorage.getItem(el);
     }
-  }
+  };
 
   function helper(e) {
     var route = document.getElementById('views');
