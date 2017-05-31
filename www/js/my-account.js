@@ -1,5 +1,5 @@
 (function() {}).render({
-  "moje-konto": (function() {
+  "my-account": (function() {
 
     var params = {
       "email": window.loged

@@ -39,11 +39,14 @@
   }
 
   function router() {
-    window.addEventListener('load', function(e) {
-      window.location.href = window.location.origin + "/#/logowanie";
-      helper(window.location.origin + "/#/logowanie");
-      window.loged = "";
-    }, false)
+    if (window.performance) {
+      window.addEventListener('load', function() {
+        window.location.href = window.location.origin + "/#/login";
+        helper(window.location.href);
+        window.loged = "";
+      }, false);
+      return;
+    }
     window.addEventListener("hashchange", function(e) {
       helper(e.newURL);
     }, false);

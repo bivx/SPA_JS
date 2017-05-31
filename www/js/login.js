@@ -1,5 +1,5 @@
 (function() {}).render({
-  "logowanie": (function() {
+  "login": (function() {
     (function() {
       const login = document.getElementById('login');
       const repeatPassword = document.getElementById('register');
@@ -16,7 +16,7 @@
           var data = JSON.parse(data);
           if (data.message === "success") {
             window.loged = data.email;
-            window.location.href = window.location.origin + "/#/napisz";
+            window.location.href = window.location.origin + "/#/comment";
             document.getElementsByClassName('list-account')[0].style.display = "block";
             document.getElementsByClassName('list-comment')[0].style.display = "block";
           } else {

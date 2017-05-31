@@ -1,5 +1,5 @@
 (function() {}).render({
-  "napisz": (function() {
+  "comment": (function() {
     const addComent = document.getElementById("comment");
     addComent.addEventListener("click", function() {
       const title = document.getElementsByClassName("text")[0].value;
@@ -12,7 +12,7 @@
       (function() {}).ajax("post", '/comment', params, function(data) {
         var data = JSON.parse(data);
         if (data.message === "success") {
-          window.location.href = window.location.origin + "/#/moje-konto";
+          window.location.href = window.location.origin + "/#/my-account";
         } else {
           console.log(data.message);
         }

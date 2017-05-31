@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title></title>
 
   <link href="css/style.css" rel="stylesheet">
@@ -20,17 +21,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         </button>
-          <div id="menu-close" type="button" name="button" style="display: none"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
-        <a href="#/" class="navbar-brand">Brand</a>
+        <div id="menu-close" type="button" name="button" style="display: none"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+        <a href="#/" class="navbar-brand">thankYou</a>
       </div>
 
       <div class="menu-toggle"></div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="list-comment"><a href="#/napisz">Write a comment</a></li>
-          <li class="list-account" style="display: none"><a href="#/moje-konto">My account</a></li>
-          <li><a href="#/logowanie">Login</a></li>
+          <li class="list-comment"><a href="#/comment">Write a comment</a></li>
+          <li class="list-account" style="display: none"><a href="#/my-account">My account</a></li>
+          <li><a href="#/login">Login</a></li>
         </ul>
         <form class="navbar-form navbar-left">
           <div class="form-group">
@@ -47,13 +48,13 @@
   <div id="views">
 
   </div>
-  <script id="moje-konto" type="text/template">
+  <script id="my-account" type="text/template">
     <div>
       <div class="panel panel-info">
       </div>
     </div>
   </script>
-  <script id="logowanie" type="text/template">
+  <script id="login" type="text/template">
     <div>
       <div style="display: none" class="alert alert-danger" role="alert" id="form-error"> </div>
       <div class="form-wrap">
@@ -78,7 +79,7 @@
       <div class="wraper-logout btn-wrap" style="display: none"><a class="btn btn-info btn-lg quit" role="button" id="logout">Logout</a></div>
     </div>
   </script>
-  <script id="napisz" type="text/template">
+  <script id="comment" type="text/template">
     <div>
       <form method="post" id="form-control">
         <div class="input-group input-group-lg log">
@@ -97,9 +98,9 @@
   </script>
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
-  <script src="js/logowanie.js"></script>
-  <script src="js/mojeKonto.js"></script>
-  <script src="js/napisz.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/my-account.js"></script>
+  <script src="js/comment.js"></script>
 </body>
 
 </html>
